@@ -1,5 +1,9 @@
+from django.conf import settings
 from django.db import models
+
 from .utils import code_generator, create_shortcode
+
+SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
 
 
 class AppURLManager(models.Manager):
@@ -23,7 +27,7 @@ class AppURLManager(models.Manager):
 
 class AppURL(models.Model):
     url = models.CharField(max_length=220, )
-    shortcode = models.CharField(max_length=15, unique=True, blank=True)
+    shortcode = models.CharField(max_length=SHORTCODE_MAX, unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)  # everytime the model is saved
     timestamp = models.DateTimeField(auto_now_add=True)  # when model was created
     active = models.BooleanField(default=True)
