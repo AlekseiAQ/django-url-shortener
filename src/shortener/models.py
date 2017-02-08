@@ -8,11 +8,14 @@ class AppURLManager(models.Manager):
         qs = qs_main.filter(active=True)
         return qs
 
-    def refresh_shortcodes(self):
+    def refresh_shortcodes(self, items=None):
         qs = AppURL.objects.filter(id__gte=1)
+        if items and isinstance(items, int):
+            qs = qs.order_by('-id')[:items]
         new_codes = 0
         for q in qs:
             q.shortcode = create_shortcode(q)
+            print(q.id)
             q.save()
             new_codes += 1
         return 'New codes made: {}'.format(new_codes)
