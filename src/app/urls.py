@@ -16,6 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from shortener.views import app_redirect_view, AppCBView
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^view-1/$', app_redirect_view),
+    url(r'^view-2/$', AppCBView.as_view()),
 ]
