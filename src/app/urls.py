@@ -18,9 +18,16 @@ from django.contrib import admin
 
 from shortener.views import app_redirect_view, AppCBView
 
+# DO NOT DO
+# from shortener import views
+# from another_app.views import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^view-1/$', app_redirect_view),
-    url(r'^view-2/$', AppCBView.as_view()),
+    url(r'^a/(?P<shortcode>[\w-]+)/$', app_redirect_view),
+    url(r'^b/(?P<shortcode>[\w-]+)/$', AppCBView.as_view()),
+
+    # DO NOT DO
+    # url(r'^abc/$', 'shortener.views.app_redirect_view'),
+    # url(r'^abc/$', views.app_redirect_view),
 ]
