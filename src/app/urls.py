@@ -24,8 +24,8 @@ from shortener.views import app_redirect_view, AppCBView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^a/(?P<shortcode>[\w-]+)/$', app_redirect_view),
-    url(r'^b/(?P<shortcode>[\w-]+)/$', AppCBView.as_view()),
+    url(r'^a/(?P<shortcode>[\w-]+){6, 15}/$', app_redirect_view),
+    url(r'^b/(?P<shortcode>[\w-]+){6, 15}/$', AppCBView.as_view()),
 
     # DO NOT DO
     # url(r'^abc/$', 'shortener.views.app_redirect_view'),
