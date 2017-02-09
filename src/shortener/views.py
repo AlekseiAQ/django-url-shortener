@@ -9,6 +9,12 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         return render(request, "shortener/home.html", {})
 
+    def post(self, request, *args, **kwargs):
+        # some_dict = {}
+        # some_dict.get("url", "http://google.com")
+        print(request.POST.get("url"))
+        return render(request, "shortener/home.html", {})
+
 
 class AppCBView(View):  # class based view CBV
     def get(self, request, shortcode=None, *args, **kwargs):
