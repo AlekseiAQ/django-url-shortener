@@ -22,5 +22,5 @@ from shortener.views import HomeView, AppCBView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view()),
-    url(r'^(?P<shortcode>[\w-]+){6,15}/$', AppCBView.as_view()),
+    url(r'^(?P<shortcode>[\w-]{6,16})$', AppCBView.as_view(), name='scode'),
 ]

@@ -60,7 +60,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'app.urls'
 ROOT_HOSTCONF = 'app.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = "http://www.sirr.com:8000"
+DEFAULT_REDIRECT_URL = 'http://www.sirr.com:8000'
+PARENT_HOST = 'sirr.com:8000'
 
 TEMPLATES = [
     {
