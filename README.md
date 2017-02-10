@@ -3,4 +3,4 @@
 ToDo
 - [ ] Handle static files
 - [ ] Rewrite deployment settings
-- [ ] Add templates for errors 404, 500 and etc.
+- [x] Add templates for errors 404, 500 and etc.
