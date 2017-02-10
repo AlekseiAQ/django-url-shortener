@@ -11,9 +11,11 @@ from .models import AppURL
 class HomeView(View):
     def get(self, request, *args, **kwargs):
         the_form = SubmitUrlForm()
+        bg_image = "https://www.goodfreephotos.com/albums/new-zealand/wellington/satellite-image-of-wellington-new-zealand.jpg"
         context = {
             "title": "URL Shortener",
-            "form": the_form
+            "form": the_form,
+            "bg_image": bg_image,
         }
         return render(request, "shortener/home.html", context)
 

@@ -41,6 +41,8 @@ class AppURL(models.Model):
     def save(self, *args, **kwargs):
         if not self.shortcode:
             self.shortcode = create_shortcode(self)
+        if "http" not in self.url:
+            self.url = "http://" + self.url
         super(AppURL, self).save(*args, **kwargs)
 
     def __str__(self):
