@@ -3,7 +3,7 @@ from django import forms
 from .validators import validate_url, validate_dot_com
 
 
-class SubminUrlForm(forms.Form):
+class SubmitUrlForm(forms.Form):
     url = forms.CharField(label="Submit your URL", validators=[validate_url, validate_dot_com])
 
     # def clean(self):
