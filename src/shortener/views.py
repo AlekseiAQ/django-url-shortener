@@ -2,18 +2,29 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 
+from .forms import SubminUrlForm
 from .models import AppURL
 
 
 class HomeView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, "shortener/home.html", {})
+        the_form = SubminUrlForm()
+        context = {
+            "title": "URL Shortener",
+            "form": the_form
+        }
+        return render(request, "shortener/home.html", context)
 
     def post(self, request, *args, **kwargs):
-        # some_dict = {}
-        # some_dict.get("url", "http://google.com")
-        print(request.POST.get("url"))
-        return render(request, "shortener/home.html", {})
+        form = SubminUrlForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+
+        context = {
+            "title": "URL Shortener",
+            "form": form
+        }
+        return render(request, "shortener/home.html", context)
 
 
 class AppCBView(View):  # class based view CBV
