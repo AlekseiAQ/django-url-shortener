@@ -18,7 +18,7 @@ class HomeView(View):
     def post(self, request, *args, **kwargs):
         form = SubminUrlForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
+            print(form.cleaned_data.get("url"))
 
         context = {
             "title": "URL Shortener",
